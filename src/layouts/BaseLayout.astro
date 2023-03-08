@@ -1,0 +1,23 @@
+---
+import Footer from '../components/Footer';
+
+export interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Personal developer site of kulgg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? "heliac"}</title>
+  </head>
+  <body class="bg-green-900 text-gray-100">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import DynamicHeader from "./DynamicHeader";
+import Header from "./Header";
+import Footer from "../components/Footer";
+
+export interface Props {
+  title?: string;
+  dynamicHeader?: boolean;
+}
+
+const { title, dynamicHeader } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  {dynamicHeader ? <DynamicHeader client:idle /> : <Header />}
+  <slot />
+  <Footer client:idle></Footer>
+</BaseLayout>

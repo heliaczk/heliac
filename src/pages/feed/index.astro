@@ -1,0 +1,18 @@
+---
+import LatestPosts from "../../components/blog/LatestPosts.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Frontmatter } from "../../types/frontmatter";
+import { sortPostsByPublishDate } from "../../utils/blog";
+
+const posts = await Astro.glob<Frontmatter>("../../../data/blog/*.md");
+sortPostsByPublishDate(posts);
+---
+
+<Layout>
+  <main class="container px-2 py-3">
+    <div class="my-6"></div>
+    <span class="text-3xl px-10">Blog</span>
+    <div class=""></div>
+    <LatestPosts posts={posts} />
+  </main>
+</Layout>

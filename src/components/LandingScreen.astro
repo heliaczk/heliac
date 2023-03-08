@@ -1,0 +1,81 @@
+---
+import { VscGithub } from "@react-icons/all-files/vsc/VscGithub";
+import { VscTwitter } from "@react-icons/all-files/vsc/VscTwitter"
+import AnimatedDownArrow from "../components/AnimatedDownArrow";
+import type { Frontmatter } from "../types/frontmatter";
+import { sortPostsByPublishDate } from "../utils/blog";
+import LatestPosts from "./blog/LatestPosts.astro";
+
+
+let posts = await Astro.glob<Frontmatter>("../../data/blog/*.md");
+sortPostsByPublishDate(posts);
+posts = posts.slice(0, 5);
+---
+
+<div id="landing-screen" class="bg-slate-900">
+  <div
+    class="min-h-screen flex flex-col justify-between container items-center"
+  >
+    <button class=" button my-4 text-2xl right-1">
+      <a href="/blog" class="hidden hover:underline">Blog</a>
+    </button>
+    <div class="">
+      
+      <h1
+        class="pb-2 text-5xl font-bold text-center text-transparent bold-text bg-clip-text bg-gradient-to-r from-green-600 via-green-400 to-green-200 animate-gradient-text"
+      >
+        heliac<span class="text-yellow-100">.</span>dev
+      </h1>
+      <div class="text-center py-3 text-lg font-semibold">
+        
+      </div>
+      <div class="flex justify-center">
+        <a
+          href="https://github.com/heliaczk"
+          class="transition-colors duration-200 rounded-full hover:bg-slate-700 p-3"
+          aria-label="Github"
+        >
+          <VscGithub className="w-6 h-6" />
+        </a>
+        <wbr>
+        <a
+          href="https://twitter.com/0xheliac"
+          class="transition-colors duration-200 rounded-full hover:bg-slate-700 p-3"
+          aria-label="Twitter"
+        >
+          <VscTwitter className="w-6 h-6" />
+        </a>
+      </div>
+    </div>
+    <div class="justify-self-right mb-0">
+      <AnimatedDownArrow client:load />
+    </div>
+  </div>
+</div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+  is:inline
+  defer
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"
+  is:inline
+  defer
+></script>
+<script>
+  addEventListener("DOMContentLoaded", (event) => {
+    VANTA.GLOBE({
+      el: "#landing-screen",
+      mouseControls: false,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x6cffa2,
+      size: 1.50,
+      backgroundColor: 0x153c1b,
+    });
+  });
+</script>

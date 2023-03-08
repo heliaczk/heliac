@@ -1,0 +1,24 @@
+---
+import type { MarkdownInstance, MDXInstance } from "astro";
+import type { Frontmatter } from "../../types/frontmatter";
+import FadeUpContainer from "../FadeUpContainer";
+import PostCard from "./PostCard";
+
+export interface Props {
+  posts: MarkdownInstance<Frontmatter>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="flex flex-col gap-10" id="blog">
+  {
+    posts.map((post, i) => {
+      return (
+        <FadeUpContainer delay={0.1 * i} client:visible>
+          <PostCard post={post} />
+        </FadeUpContainer>
+      );
+    })
+  }
+</div>

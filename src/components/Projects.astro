@@ -1,0 +1,17 @@
+---
+import { projects } from "../../data/projects";
+import FadeUpContainer from "./FadeUpContainer";
+import ProjectEntry from "./ProjectEntry";
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mx-2">
+  {
+    projects.map((project, i) => {
+      return (
+        <FadeUpContainer delay={i * 0.09} client:visible>
+          <ProjectEntry project={project} />
+        </FadeUpContainer>
+      );
+    })
+  }
+</div>

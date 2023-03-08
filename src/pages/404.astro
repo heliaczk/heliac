@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div
+    id="page"
+    class="h-screen flex flex-col justify-center items-center p-0 m-0"
+  >
+    <h1 class="text-4xl text-white font-semibold">404</h1>
+    <h2 class="text-2xl text-gray-100">:(</h2>
+    <div class="my-4"></div>
+    <a href="/" class="px-3 py-1 border border-gray-100 text-gray-100"
+      >---</a
+    >
+  </div>
+ <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"
+  is:inline
+  defer
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"
+  is:inline
+  defer
+></script>
+<script>
+  addEventListener("DOMContentLoaded", (event) => {
+    VANTA.GLOBE({
+      el: "#page",
+      mouseControls: false,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x6cffa2,
+      size: 1.50,
+      backgroundColor: 0x153c1b,
+    });
+  });
+</script>
+
+</BaseLayout>
